@@ -1,0 +1,22 @@
+##############
+  WINDOWS
+##############
+  gcc main.c player1.c player2.c include/tigr.c include/tigr_resize.c include/board.c -lopengl32 -lgdi32 -o run
+
+##############
+  MAC
+##############
+  gcc main.c  player1.c player2.c include/tigr.c include/tigr_resize.c include/board.c -framework OpenGL -framework Cocoa -o run
+
+##############
+  Defines
+##############
+  -DPLAYER          | Configure the game to run in bot-vs-player mode
+  -DSPECTATOR       | Enable ship visibility on both boards (only matters if PLAYER is defined)
+  -DNO_FRAME_DELAY  | Disable pause between frames on animation - may cause stuttery frame rate, but maximises the speed of the game
+
+  -DPYTHON_BOT -l"python<ver>"  | Enable python for bot1 - code placed in the `player1.py` file
+                                | Replace <ver> with your python version - for instance, -l"python3.10"
+                                | - Some important notes about the python scripting and linking in the file
+
+  -DNO_GRAPHICS     | Disable the game rendering, and switch to text logging mode
