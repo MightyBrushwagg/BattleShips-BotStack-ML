@@ -2,6 +2,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from time import sleep
 
 '''
 ### Key Implementation Notes ###
@@ -86,6 +87,7 @@ class Net(nn.Module):
         self.fc3 = nn.Linear(84, 100)  # 100 = 10x10 ship placement prediction
 
     def forward(self, x):
+        print("Hello")
         x = F.tanh(self.conv1(x))
         x = F.tanh(self.conv2(x))
         # x = F.tanh(self.conv3(x))
@@ -113,7 +115,8 @@ def player1Action(board: list, remaining_ships : list):
 
     # --- Model prediction ---
     model = Net()
-    model.load_state_dict(torch.load(r"/Users/xavierparker/Desktop/Bot Stack/battleships/AI model/trained.pth"))
+    # model.load_state_dict(torch.load(r"/Users/xavierparker/Desktop/Bot Stack/battleships/AI model/trained.pth"))
+    model.load_state_dict(torch.load(r"/Users/xavierparker/Desktop/Bot Stack/battleships/best models/twomillion.pth"))
     model.eval()
 
     input_tensor = torch.from_numpy(board_input).unsqueeze(0).unsqueeze(0).float()  # shape: [1, 1, 10, 10]
@@ -134,7 +137,14 @@ def player1Action(board: list, remaining_ships : list):
                 max_x = j
                 max_y = i
 
+
+    print("   ")
     print(f"Best move: x={max_x}, y={max_y}, predicted score={max_val:.4f}")
+    print(board_input)
+    print(output)
+
+
+    # sleep(10)
 
     return[max_x,max_y]
 

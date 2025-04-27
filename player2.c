@@ -8,7 +8,7 @@ ShipPlacement player2PlaceShip(Board board, ShipID ship) {
     case SHIP_PATROL_BOAT: // 1x2
       return (ShipPlacement){5, 3, 0};
     case SHIP_SUBMARINE: // 
-      return (ShipPlacement){0, 1, 0};
+      return (ShipPlacement){4, 1, 0};
     case SHIP_DESTROYER:
       return (ShipPlacement){2, 4, 1};
     case SHIP_BATTLESHIP:
