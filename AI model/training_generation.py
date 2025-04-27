@@ -27,7 +27,7 @@ class Data_Set(Dataset):
 
     def __len__(self):
         # this is total training number
-        return 10000
+        return 100000
     
     def __getitem__(self, index):
         # generate random board with random n 

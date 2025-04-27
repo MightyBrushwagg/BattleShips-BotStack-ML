@@ -1,9 +1,6 @@
 import numpy as np
 from time import sleep
 from math import exp
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
 
 class Board():
     def __init__(self, X=10, Y=10, n = 10):
@@ -102,15 +99,15 @@ class Board():
                 
 
                 # reflection
-                if reflection:
-                    # flip left right (y axis)
-                    flip_matrix = np.array(((-1, 0), (0, 1)))
-                    permutated_ship = np.matmul(flip_matrix, rotated_ship)
+                # if reflection:
+                #     # flip left right (y axis)
+                #     flip_matrix = np.array(((-1, 0), (0, 1)))
+                #     permutated_ship = np.matmul(flip_matrix, rotated_ship)
 
                     
-                else:
+                # else:
                     # no flip
-                    permutated_ship = rotated_ship
+                permutated_ship = rotated_ship
 
                 # print("Reflected")
                 # print(permutated_ship)
@@ -153,7 +150,7 @@ class Board():
     # sets self.shots
     def generateShots(self, X=10, Y=10):
         # Approached trying for now random matrix of hits 
-        # this is where ML will be turnede average to great
+        # this is where ML will be turned average to great
 
         m = -1 + exp(2*self.n/(X*Y))
         # print(m)
